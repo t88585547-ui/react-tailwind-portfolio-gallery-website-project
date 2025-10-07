@@ -1,0 +1,42 @@
+
+import { Link } from "react-router-dom";
+
+export default function Homepages() {
+  return (
+    <section className="flex flex-col">
+      <section className="relative mt-20 px-4">
+        <img
+          src="https://i.pinimg.com/1200x/f5/66/75/f5667576dde72a72298ed6bf21819a11.jpg"
+          alt="art"
+          className="w-full max-w-5xl h-auto mx-auto rounded-2xl shadow-[-1px_5px_31px_5px_#30baff] object-cover"
+        />
+      </section>
+
+      <div className="flex flex-col text-center mt-20 ">
+        <h1 className="text-[50px] md:text-[70px] text-black font-semibold">Hi I'm ใส่ชื่อบัง</h1>
+        <p className="text-xl text-black font-semibold mt-6">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <br />
+          Eaque eum minus possimus aliquam. Odit, labore. Labore, ab! Sit,
+          <br />
+          vitae optio?
+        </p>
+      </div>
+      <div className="space-x-6 text-center mt-20  ">
+        <Link
+          to="/gallery"
+          className="text-white text-2xl font-semibold bg-blue-500 px-6 py-3 rounded-2xl shadow-[-1px_8px_17px_2px_#87d9ff]
+                        transition-all duration-300 hover:scale-110 hover:bg-blue-700 inline-block"
+        >
+          View Work
+        </Link>
+        <Link
+          to="/contact"
+          className="text-blue-400 px-6 rounded-2xl inline-block py-2 text-2xl font-semibold shadow-[-1px_2px_17px_3px_#999999] transition-all duration-300  hover:scale-110 hover:text-white hover:bg-blue-700"
+        >
+          Contact Me
+        </Link>
+      </div>
+    </section>
+  );
+}
