@@ -1,5 +1,5 @@
-
 import { Link } from "react-router-dom";
+import { ReactTyped } from "react-typed";
 
 export default function Homepages() {
   return (
@@ -13,7 +13,17 @@ export default function Homepages() {
       </section>
 
       <div className="flex flex-col text-center mt-20 ">
-        <h1 className="text-[50px] md:text-[70px] text-black font-semibold">Hi I'm ใส่ชื่อบัง</h1>
+        <h1 className="text-4xl font-bold">
+          I am a{" "}
+          <ReactTyped
+            strings={["ชื่อบัง", "ข้อความ1", "ข้อความอะไรก้ได้"]}
+            typeSpeed={80}
+            backSpeed={50}
+            loop
+            showCursor={true}
+            className="text-blue-400"
+          />
+        </h1>
         <p className="text-xl text-black font-semibold mt-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           <br />
