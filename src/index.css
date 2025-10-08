@@ -1,1 +1,27 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@keyframes ripple-gradient {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.8;
+    filter: blur(0px);
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(25);
+    opacity: 0.7;
+    filter: blur(15px);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(80);
+    opacity: 0;
+    filter: blur(60px);
+  }
+}
+
+.animate-ripple-gradient {
+  animation: ripple-gradient 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+

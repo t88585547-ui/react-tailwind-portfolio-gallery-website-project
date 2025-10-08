@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useRef } from "react";
 // import { useReducer } from "react";
 import { useState } from "react";
+import { ReactTyped } from "react-typed";
 
 const images = import.meta.glob("../assets/images/*.{jpg,png,jpeg,svg}", {
   eager: true,
@@ -65,12 +66,22 @@ export default function Gallery() {
   });
 
   return (
-    <section className="flex flex-col gap-y-10 mt-32">
+    <section className="flex flex-col gap-y-10 pt-32 dark:bg-gradient-to-b from-gray-900 to-gray-800">
       <section>
         <div className="space-y-3">
-          <h2 className="text-[60px] font-bold text-center">Gallery</h2>
+          <h2 className="text-[60px] font-bold text-center dark:text-white">
+            This is My{" "}
+            <ReactTyped
+              strings={["Gallery", "Portfolio", "Work"]}
+              typeSpeed={80}
+              backSpeed={50}
+              loop
+              showCursor={true}
+              className="text-blue-500 [text-shadow:_7px_5px_10px_rgba(97,202,255,0.92)] dark:text-white"
+            />
+          </h2>
 
-          <p className="text-xl font-semibold text-center">
+          <p className="text-xl font-semibold text-center dark:text-white">
             Lorem ipsum dolor sit, amet consectetur
             <br />
             adipisicing elit. Officiis quasi sed voluptate cum natus autem.
@@ -79,13 +90,13 @@ export default function Gallery() {
       </section>
 
       <section className="m-5">
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-4 p-4">
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-5 p-4">
           {Object.values(images).map((img, index) => (
             <div key={index} className="break-inside-avoid mb-4">
               <img
                 src={img.default}
                 alt={`gallery-${index}`}
-                className="w-full rounded-lg hover:scale-105 transition-transform duration-300"
+                className="w-full rounded-lg hover:scale-105 transition-transform duration-300 dark:border-white dark:border-1"
                 onClick={() => openlightbox(index)}
               />
             </div>

@@ -1,29 +1,29 @@
 export default function Contact() {
   return (
-    <section className="flex flex-col lg:flex-row justify-center items-start mt-20 gap-16 px-6">
-      <section className="w-full max-w-md space-y-10">
+    <section className="flex flex-col lg:flex-row justify-center items-start pt-20 gap-16 px-6 dark:bg-gradient-to-b from-gray-900 to-gray-800 pb-80">
+      <section className="w-full max-w-md space-y-10 dark:bg-white p-6 rounded-2xl">
         
           <div className="space-y-3">
-            <h3 className="text-3xl font-bold text-center lg:text-left ">Get in touch</h3>
-            <p className="text-xl text-gray-700 text-center lg:text-left">
+            <h3 className="text-3xl font-bold text-center lg:text-left  dark:text-black">Get in touch</h3>
+            <p className="text-xl text-gray-700 text-center lg:text-left ">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit,
               perferendis?
             </p>
           </div>
 
           <form
-            className="space-y-6"
+            className="space-y-6 dark:text-black"
             action="https://formspree.io/f/mgeryxyz" // URL ของเธอ
             method="POST"
           >
-            <div className="flex flex-col">
+            <div className="flex flex-col ">
               <label className="">Name</label>
               <input
                 type="text"
                 name="name"
                 placeholder="Your Name"
                 required
-                className="mt-2 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="mt-2 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 dark:text-black"
               />
             </div>
             <div className="flex flex-col">
@@ -33,7 +33,7 @@ export default function Contact() {
                 name="email"
                 placeholder="you@example.com"
                 required
-                className="mt-2 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="mt-2 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 dark:text-black"
               />
             </div>
             <div className="flex flex-col">
@@ -43,7 +43,7 @@ export default function Contact() {
                 name="subject"
                 placeholder="Inquiry about..."
                 required
-                className="mt-2 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="mt-2 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 dark:text-black"
               />
             </div>
             <div className="flex flex-col">
@@ -52,7 +52,7 @@ export default function Contact() {
                 name="message"
                 rows="5"
                 required
-                className="mt-2 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="mt-2 p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 dark:text-black"
               ></textarea>
             </div>
           </form>
@@ -64,14 +64,14 @@ export default function Contact() {
         
       </section>
 
-      <section className="flex flex-col gap-y-8">
+      <section className="flex flex-col gap-y-8 dark:bg-white p-6 rounded-2xl">
         <div className="space-y-3">
-          <h3 className="text-3xl font-semibold">Contact with Me</h3>
+          <h3 className="text-3xl font-semibold dark:text-black">Contact with Me</h3>
 
-          <p className="text-xl ">Lorem ipsum dolor sit amet.</p>
+          <p className="text-xl dark:text-black">Lorem ipsum dolor sit amet.</p>
         </div>
 
-        <div className="flex gap-x-6">
+        <div className="flex gap-x-6 ">
           <a href="#!" role="button">
             {/* <!-- Facebook --> */}
             <svg
