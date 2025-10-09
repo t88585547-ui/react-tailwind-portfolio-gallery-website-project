@@ -83,7 +83,7 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle navigation menu"
-            className="lg:hidden p-2 focus:outline-none"
+            className="lg:hidden p-2 focus:outline-none dark:text-black "
           >
             {isOpen ? (
               <svg

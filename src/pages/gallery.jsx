@@ -12,8 +12,27 @@ export default function Gallery() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setcurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
+  const [currentPage, setcurrentPage] = useState(1);
+  const imagesPerPage = 10;
 
   const imagelist = Object.values(images).map((img) => img.default);
+  // imagelist = Array(10).fill(imagelist).flat();
+
+  const indexOfLastImage = currentPage * imagesPerPage;
+  const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+  const currentImages = imagelist.slice(indexOfFirstImage, indexOfLastImage);
+
+  const nextPage = () => {
+    if (indexOfFirstImage < imagelist.length) setcurrentPage(currentPage + 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) setcurrentPage(currentPage - 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
@@ -69,7 +88,7 @@ export default function Gallery() {
     <section className="flex flex-col gap-y-10 pt-32 dark:bg-gradient-to-b from-gray-900 to-gray-800">
       <section>
         <div className="space-y-3">
-          <h2 className="text-[60px] font-bold text-center dark:text-white">
+          <h2 className="text-3xl md:text-[60px] font-bold text-center dark:text-white">
             This is My{" "}
             <ReactTyped
               strings={["Gallery", "Portfolio", "Work"]}
@@ -91,13 +110,13 @@ export default function Gallery() {
 
       <section className="m-5">
         <div className="columns-2 md:columns-3 lg:columns-4 gap-5 p-4">
-          {Object.values(images).map((img, index) => (
+          {currentImages.map((img, index) => (
             <div key={index} className="break-inside-avoid mb-4">
               <img
-                src={img.default}
+                src={img}
                 alt={`gallery-${index}`}
                 className="w-full rounded-lg hover:scale-105 transition-transform duration-300 dark:border-white dark:border-1"
-                onClick={() => openlightbox(index)}
+                onClick={() => openlightbox(indexOfFirstImage + index)}
               />
             </div>
           ))}
@@ -136,6 +155,52 @@ export default function Gallery() {
           </div>
         )}
       </section>
+
+      <div className="flex justify-center items-center gap-5 mt-6">
+        <button
+          onClick={prevPage}
+          disabled={currentPage === 1}
+          className="px-4 py-2 bg-gray-300 rounded-lg dark:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark:text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+            />
+          </svg>
+        </button>
+        <span className="text-lg font-medium dark:text-white">
+          Page {currentPage} / {Math.ceil(imagelist.length / imagesPerPage)}
+        </span>
+        <button
+          onClick={nextPage}
+          disabled={indexOfFirstImage >= imagelist.length}
+          className="px-4 py-2 bg-gray-300 rounded-lg dark:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark:text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </button>
+      </div>
     </section>
   );
 }

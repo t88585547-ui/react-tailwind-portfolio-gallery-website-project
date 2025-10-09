@@ -5,6 +5,7 @@ import Gallery from "./pages/gallery";
 import Contact from "./pages/contact";
 import useDarkMode from "./hooks/useDarkMode";
 import { useState } from "react";
+import Footer from "./components/footer";
 
 function App() {
   const [theme, toggleTheme] = useDarkMode();
@@ -57,6 +58,8 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+
+        <Footer />
       </Router>
     </div>
   );

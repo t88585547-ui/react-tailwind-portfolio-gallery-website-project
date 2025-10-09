@@ -13,7 +13,7 @@ export default function Homepages() {
       </section>
 
       <div className="flex flex-col text-center mt-20">
-        <h1 className="text-[40px] md:text-[60px] font-bold dark:text-white ">
+        <h1 className="text-3xl md:text-[60px] font-bold dark:text-white ">
           I am a{" "}
           <ReactTyped
             strings={["ชื่อบัง", "ข้อความ1", "ข้อความอะไรก้ได้"]}
