@@ -11,39 +11,57 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <nav className="top-0 w-full fixed mt-2 z-50">
+    <nav className="top-0 w-full mt-2 fixed  z-50 ">
+      
+
       {/* Navbar container */}
-      <div className="flex justify-between items-center px-6 py-1 bg-white lg:w-[800px] absolute left-1/2 -translate-x-1/2 rounded-full shadow-[2px_10px_13px_-2px_rgba(50,_50,_93,_0.25)] sm:w-[300px]">
+      <div className=" flex justify-between items-center px-6 py-1 bg-gradient-to-r from-sky-400 to-yellow-100 lg:w-[800px]  left-1/2 -translate-x-1/2 rounded-full shadow-[2px_10px_13px_-2px_rgba(50,_50,_93,_0.25)] sm:w-[300px] dark:from-neutral-700 dark:to-indigo-800 absolute">
         {/* Logo */}
-        <div>
+
+        
+        {/* Clouds background */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 rounded-full">
+          <div className="cloud layer1 top-[10px] left-[-100px] dark:cloud-dark z-0"></div>
+          <div className="cloud layer2 top-[30px] left-[-200px] dark:cloud-dark z-0"></div>
+          <div className="cloud layer3 top-[50px] left-[-250px] dark:cloud-dark z-0"></div>
+          <div className="cloud layer1 top-[2px] left-[-150px] dark:cloud-dark z-0"></div>
+          <div className="cloud layer2 top-[40px] left-[-300px] dark:cloud-dark z-0"></div>
+          <div className="cloud layer3 top-[60px] left-[-350px] dark:cloud-dark z-0"></div>
+
+        </div>
+        
+
+
+
+        <div className="z-10">
           <Link to="/">
             <img
               src="https://i.pinimg.com/736x/4c/25/f1/4c25f149a63c2b56830f61e17b21215c.jpg"
-              className="w-10 h-10 rounded-full border-2 border-solid border-gray-300 dark:border-gray-500"
+              className="w-10 h-10 rounded-full border-1 border-solid border-gray-300 dark:white"
               alt="logo"
             />
           </Link>
         </div>
 
         {/* Desktop menu */}
-        <ul className="hidden lg:flex space-x-8 text-gray-900 font-semibold">
-          <li className="hover:text-red-500 hover:[text-shadow:_7px_5px_10px_#ff9999] transition">
-            {<Link to="/">Home</Link>}
+        <ul className="hidden lg:flex space-x-8 text-gray-900 font-medium text-[18px]  z-10">
+          <li className="hover:text-red-500 transition z-10 dark:bg-gradient-to-r dark:from-yellow-500 dark:to-red-600 dark:text-transparent dark:bg-clip-text dark:text-shadow-2xsm [text-shadow:_7px_5px_10px_#ff9999]">
+            {<Link to="/" className="">Home</Link>}
           </li>
-          <li className="hover:text-red-500 hover:[text-shadow:_7px_5px_10px_#ff9999] transition">
-            {<Link to="/gallery">Work</Link>}
+          <li className="hover:text-red-500 transition z-10 dark:bg-gradient-to-r dark:from-yellow-500 dark:to-red-600 dark:text-transparent dark:bg-clip-text dark:text-shadow-2xsm [text-shadow:_7px_5px_10px_#ff9999]">
+            {<Link to="/gallery" className="">Work</Link>}
           </li>
-          <li className="hover:text-red-500 hover:[text-shadow:_7px_5px_10px_#ff9999] transition">
-            {<Link to="/contact">Contact</Link>}
+          <li className="hover:text-red-500 transition z-10 dark:bg-gradient-to-r dark:from-yellow-500 dark:to-red-600 dark:text-transparent dark:bg-clip-text dark:text-shadow-2xsm [text-shadow:_7px_5px_10px_#ff9999]">
+            {<Link to="/contact" className="">Contact</Link>}
           </li>
         </ul>
 
         {/* Right controls: Theme toggle + Burger */}
-        <div className="flex items-center space-x-3 pl-3">
+        <div className="flex items-center space-x-3 pl-3 z-10">
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+            className="p-2 rounded-full z-10 bg-gray-200 dark:bg-slate-200 hover:bg-gray-300 dark:hover:bg-gray-700 transition"
             title="Toggle Theme"
           >
             {theme === "dark" ? (
@@ -53,7 +71,7 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6 text-yellow-400"
+                className="size-6 text-yellow-600"
               >
                 <path
                   strokeLinecap="round"
@@ -122,7 +140,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white font-semibold transition-all duration-300 ease-in-out ${
+        className={`fixed top-0 z-10 right-0 h-full w-64 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white font-semibold transition-all duration-300 ease-in-out ${
           isOpen
             ? "translate-x-0 opacity-100 pointer-events-auto"
             : "translate-x-full opacity-0 pointer-events-none"

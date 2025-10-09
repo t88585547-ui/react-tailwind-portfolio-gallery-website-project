@@ -32,8 +32,6 @@ export default function Gallery() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  
-
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
@@ -90,14 +88,14 @@ export default function Gallery() {
         <div className="space-y-3">
           <h2 className="text-3xl md:text-[60px] font-bold text-center dark:text-white">
             This is My{" "}
-            <ReactTyped
-              strings={["Gallery", "Portfolio", "Work"]}
-              typeSpeed={80}
-              backSpeed={50}
-              loop
-              showCursor={true}
-              className="text-blue-500 [text-shadow:_7px_5px_10px_rgba(97,202,255,0.92)] dark:text-white"
-            />
+            <span
+              className="animated-grad ml-3 active"
+              // ถ้ต้องการให้ spotlight โผล่มาเป็นค่าเริ่มต้น ให้ใส่ "active" ด้วย
+              // className="animated-grad ml-3 active"
+              // หรือ สลับ class "active" จาก JS เมื่อคำเปลี่ยน (ตัวอย่างข้างล่าง)
+            >
+              Gallery
+            </span>
           </h2>
 
           <p className="text-xl font-semibold text-center dark:text-white">
@@ -156,7 +154,7 @@ export default function Gallery() {
         )}
       </section>
 
-      <div className="flex justify-center items-center gap-5 mt-6">
+      <div className="flex justify-center items-center gap-5 mt-6 mb-6">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}

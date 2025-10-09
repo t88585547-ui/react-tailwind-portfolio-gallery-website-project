@@ -24,4 +24,182 @@
   animation: ripple-gradient 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* Cloud shapes + animation */
+.cloud {
+  position: absolute;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  width: 70px;   /* ปรับเล็กลง */
+  height: 30px;   /* ปรับเล็กลง */
+  animation: cloudMove 60s linear infinite;
+}
+
+.cloud.layer2 {
+  width: 100px;
+  height: 50px;
+  animation-duration: 90s;
+}
+
+.cloud.layer3 {
+  width: 130px;
+  height: 65px;
+  animation-duration: 120s;
+}
+
+@keyframes cloudMove {
+  0% { transform: translateX(-150px); }
+  100% { transform: translateX(100vw); }
+}
+
+/* Dark mode glow */
+.cloud-dark {
+  filter: brightness(130%) drop-shadow(0 0 6px rgba(255,255,255,0.75));
+  mix-blend-mode: screen;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.animated-grad {
+  background-size: 200% 100%;
+  animation: gradientShift 4s linear infinite;
+  position: relative;
+}
+.animated-grad::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -8px;
+  height: 6px; border-radius: 999px;
+  background: linear-gradient(90deg,#60a5fa,#a78bfa);
+  transform-origin: left; transform: scaleX(0); transition: transform .5s ease;
+}
+.animated-grad:hover::after { transform: scaleX(1); }
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------------------------
+  Animated gradient + underline
+----------------------------*/
+.animated-grad {
+  background-size: 200% 100%;
+  background-image: linear-gradient(90deg, #60a5fa, #7c3aed, #06b6d4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  transition: color .3s ease;
+  z-index: 1;
+}
+
+/* moving gradient */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-grad {
+  animation: gradientShift 4s linear infinite;
+}
+
+/* underline reveal */
+.animated-grad::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#60a5fa,#a78bfa);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform .55s cubic-bezier(.2,.9,.3,1);
+  z-index: -1;
+}
+.animated-grad:hover::after,
+.animated-grad.active::after {
+  transform: scaleX(1);
+}
+
+/* ---------------------------
+  Spotlight (light down on word)
+----------------------------*/
+.animated-grad::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -70%;
+  transform: translateX(-50%) translateY(0);
+  width: 160%;
+  height: 220%;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center,
+    rgba(255,255,255,0.55) 0%,
+    rgba(255,255,255,0.25) 12%,
+    rgba(255,255,255,0.05) 28%,
+    rgba(255,255,255,0) 40%);
+  filter: blur(14px) saturate(120%);
+  opacity: 0.0;
+  transition: opacity .45s ease, transform .6s cubic-bezier(.2,.9,.3,1);
+  z-index: 0;
+}
+
+/* show spotlight on hover or when .active added */
+.animated-grad:hover::before,
+.animated-grad.active::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(8%); /* light "settles" */
+}
+
+/* subtle pulsing for the spotlight (optional) */
+@keyframes spotPulse {
+  0% { transform: translateX(-50%) translateY(6%) scale(1); opacity: 0.9; }
+  50% { transform: translateX(-50%) translateY(8%) scale(1.02); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(6%) scale(1); opacity: 0.9; }
+}
+.animated-grad.active::before {
+  animation: spotPulse 2.8s ease-in-out infinite;
+}
+
+/* dark mode tweak: cooler spotlight and slightly stronger glow */
+.dark .animated-grad::before {
+  background: radial-gradient(ellipse at center,
+    rgba(180,210,255,0.45) 0%,
+    rgba(180,210,255,0.18) 12%,
+    rgba(180,210,255,0.03) 28%,
+    rgba(180,210,255,0) 40%);
+  filter: blur(16px) saturate(160%);
+}
+.dark .animated-grad::after {
+  background: linear-gradient(90deg,#7dd3fc,#a78bfa);
+}
+
+/* accessibility: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animated-grad { animation: none !important; }
+  .animated-grad::before { transition: none; animation: none; }
+}
+
+
 

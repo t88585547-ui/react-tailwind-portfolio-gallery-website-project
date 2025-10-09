@@ -7,6 +7,7 @@ import useDarkMode from "./hooks/useDarkMode";
 import { useState } from "react";
 import Footer from "./components/footer";
 
+
 function App() {
   const [theme, toggleTheme] = useDarkMode();
   const [animating, setAnimating] = useState(false);
